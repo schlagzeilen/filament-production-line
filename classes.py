@@ -1,8 +1,8 @@
 from pthat.pthat import Axis
-from gpiozero import button
-import time
+from gpiozero import Button
+import datetime
 
-
+print("basinga")
 class rot_axis(Axis):
     pulling_speed_ist= float()
     pulling_speed_soll= float()
@@ -30,7 +30,7 @@ class lin_axis(Axis):
     #--------------------getters
     #--------------------setters
 
-class switch(button):
+class switch(Button):
     soll = int()
 
 class maschine():
@@ -38,17 +38,17 @@ class maschine():
     durchmesser_soll = float()
     durchmesser_mean = float()
 
-    startzeit = datetime()
+    startzeit = datetime.datetime.now()
     layer = int()
     filament_length_soll =float()
     buffer_hight_ist =float()
     buffer_hight_soll = float()
 
-    switches = [switch1(), switch2(),switch3()]
+    switches = [switch(1), switch(2),switch(3)]
 
-    abzug = rot_axis()
-    wicklung  = rot_axis()
-    y_axis = lin_axis()
+    abzug =         rot_axis("X",command_id=1, serial_device="/dev/ttyS0")
+    wicklung  =     rot_axis("Z",command_id=2, serial_device="/dev/ttyS0")
+    y_axis =        lin_axis("Y",command_id=3, serial_device="/dev/ttyS0")
 
     #--------------------getters
     #--------------------setters
