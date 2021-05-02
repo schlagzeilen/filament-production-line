@@ -65,6 +65,7 @@ class lin_axis(Axis):
         """
         super().__init__(axis,command_type=command_type, command_id=command_id, serial_device=serial_device,
                          baud_rate=baud_rate, test_mode=test_mode)
+                         
         self.__position_ist = float()
         self.__position_soll =float()
 
