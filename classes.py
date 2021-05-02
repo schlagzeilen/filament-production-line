@@ -54,18 +54,18 @@ class rot_axis(Axis):
     def set_rotationcount(v):
         self.__rotationcount=v
 
+    #--------------------methodes
+
 
 
 
 class lin_axis(Axis):
     def __init__(self, axis, command_type="I", command_id=0, serial_device="/dev/ttyS0", baud_rate=115200,
                  test_mode=False):
-        """
-        Constructor
-        """
+    
         super().__init__(axis,command_type=command_type, command_id=command_id, serial_device=serial_device,
                          baud_rate=baud_rate, test_mode=test_mode)
-                         
+
         self.__position_ist = float()
         self.__position_soll =float()
 
