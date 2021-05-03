@@ -25,6 +25,7 @@ class rot_axis(Axis):
         self.__durchmesser_rolle = float()
         self.__rotationcount= int()
 
+        self.__control_state =False #soll am ende aussagen ob die Regelung an oder aus ist.
     # kontext es werden getter und setter funktionen genutzt um die Variablen vor ungewolltem ändern zu schützen
     #--------------------getters
     def get_pulling_speed_ist():
@@ -39,7 +40,8 @@ class rot_axis(Axis):
         return self.__durchmesser_rolle
     def get_rotationcount():
         return self.__rotationcount
-
+    def get_control_state():
+        return self.control_state
     #--------------------setters
     def set_pulling_speed_ist(v):
         self.__pulling_speed_ist=v
@@ -53,16 +55,23 @@ class rot_axis(Axis):
         self.__durchmesser_rolle=v
     def set_rotationcount(v):
         self.__rotationcount=v
+    def set_control_state(v):
+        self.control_state
 
     #--------------------methodes
+    #wird aufgerufen in den controll pannels der interface klasse
+    def increment_speed(self,rpm_delta):
+        #die funktion übersetzt, was ein inkremnt von delta für die frequentz bedeutet
+        new_frequency = self.frequency + self.rpm_to_frequency(rpm_delta,400,3)
 
+        self.change_speed(new_frequency)
 
 
 
 class lin_axis(Axis):
     def __init__(self, axis, command_type="I", command_id=0, serial_device="/dev/ttyS0", baud_rate=115200,
                  test_mode=False):
-    
+
         super().__init__(axis,command_type=command_type, command_id=command_id, serial_device=serial_device,
                          baud_rate=baud_rate, test_mode=test_mode)
 
