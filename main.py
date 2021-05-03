@@ -11,7 +11,7 @@ direct = "F" #input("Direction (Forward = F, Reverse = R) [F]? ") or "F"
 direction = 0
 rdc = int(rpm / 10)
 
-
+# TODO move that shit into maschine class constructor
 abzug = rot_axis("X",command_id=1, serial_device="/dev/ttyS0")
 abzug.debug = True
 abzug.auto_send_command = True
@@ -46,31 +46,5 @@ wicklung.set_axis(frequency=frequency, pulse_count=pulse_count, direction=direct
 interface = window()
 abzug_pannel = control_pannel(interface.abzug_control, abzug, home=False)
 wicklung_pannel = control_pannel(interface.wicklung_control, wicklung)
-# y_axis_pannel =control_pannel(interface.y_control, wicklung)
-interface.run()
 
-
-#
-# # Setup the X axis
-
-
-# # Get the responses - look for both responses to be returned before continuing
-# # wait_for_responses(["RI02CY*", "CI02CY*"], "------- Set Y axis command responses -------")
-#
-#
-# # Z axis
-# time.sleep(0.1)
-#
-# # Calculate frequency and pulse count
-#
-# # Setup the E axis
-# rdc = int(rpm / 10)
-               # Get the responses - look for both responses to be returned before continuing
-# wait_for_responses(["RI03CZ*", "CI03CZ*"], "------- Set Z axis command responses -------")
-
-# Start all motors - either axis can be used to call the start all method
-#
-#
-#
-# #wicklung  =     rot_axis("Z",command_id=2, serial_device="/dev/ttyS0")
-# #y_axis =        lin_axis("Y",command_id=3, serial_device="/dev/ttyS0")
+interface.run() # versteckte root.mainloop() methode

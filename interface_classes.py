@@ -43,13 +43,13 @@ class window():
 
 class control_pannel():
     def __init__(self, control, achse, home=True):
-        self.plus_eins =               Button(control, text="+1",    width =12,height =2, command =lambda: [achse.increment_speed(1)])
-        self.plus_zehntel =            Button(control, text="+0.1",  width =12,height =2)
-        self.plus_hundertstel =        Button(control, text="+0.01", width =12,height =2)
+        self.plus_eins =               Button(control, text="+10",    width =12,height =2, command =lambda: [achse.increment_speed(10)])
+        self.plus_zehntel =            Button(control, text="+1",  width =12,height =2 , command =lambda: [achse.increment_speed(1)])
+        self.plus_hundertstel =        Button(control, text="+0.1", width =12,height =2, command =lambda: [achse.increment_speed(0.1)])
         self.geschwindigkeit =         Text  (control,               width =12,height =2)
-        self.minus_eins =              Button(control, text="-1",    width =12,height =2)
-        self.minus_zehntel =           Button(control, text="-0.1",  width =12,height =2)
-        self.minus_hundertstel =       Button(control, text="-0.01", width =12,height =2)
+        self.minus_eins =              Button(control, text="-10",    width =12,height =2, command =lambda: [achse.increment_speed(-10)])
+        self.minus_zehntel =           Button(control, text="-1",  width =12,height =2, command =lambda: [achse.increment_speed(-1)])
+        self.minus_hundertstel =       Button(control, text="-0.1", width =12,height =2, command =lambda: [achse.increment_speed(-0.1)])
 
         self.minus_hundertstel.        grid(row =0, column =0)
         self.minus_zehntel.            grid(row =0, column =1)
