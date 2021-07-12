@@ -4,8 +4,8 @@ from interface_classes import window , control_pannel
 import time
 
 
-steps_per_rev = 400  #int(input("How many steps per revolution [1600]? ") or "1600")
-total_revolutions =200  #int(input("How many total revolutions [50]? ") or "50")
+steps_per_rev = 200  #int(input("How many steps per revolution [1600]? ") or "1600")
+total_revolutions =100  #int(input("How many total revolutions [50]? ") or "50")
 rpm = 500 #int(input("How many RPMs [500]? ") or "500")
 direct = "F" #input("Direction (Forward = F, Reverse = R) [F]? ") or "F"
 direction = 0
@@ -47,4 +47,14 @@ interface = window()
 abzug_pannel = control_pannel(interface.abzug_control, abzug, home=False)
 wicklung_pannel = control_pannel(interface.wicklung_control, wicklung)
 
+def display_speed():
+    newspeed=abzug.frequency_to_rpm(abzug.frequency, steps_per_rev)
+    print(newspeed)
+    abzug_pannel.geschwindigkeit.delete(1.0,"end")
+    abzug_pannel.geschwindigkeit.insert(1.0,str(newspeed))
+
+
+    textExample.insert(1.0, text)
+
 interface.run() # versteckte root.mainloop() methode
+interface.after(0,display_speed)

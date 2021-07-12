@@ -62,8 +62,7 @@ class rot_axis(Axis):
     #wird aufgerufen in den controll pannels der interface klasse
     def increment_speed(self,rpm_delta):
         #die funktion übersetzt, was ein inkremnt von delta für die frequentz bedeutet
-        new_frequency = self.frequency + self.rpm_to_frequency(rpm_delta,400,3)
-
+        new_frequency = self.frequency + self.rpm_to_frequency(rpm_delta,200,3)
         self.change_speed(new_frequency)
 
 
